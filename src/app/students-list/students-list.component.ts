@@ -13,6 +13,19 @@ export class StudentsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.students = [{
+      "studentId":1,
+      "firstName": "Bob",
+      "lastName": "Ross",
+      "dateOfBirth": "25/06/1999"
+    },
+    {
+      "studentId":2,
+      "firstName": "Paul",
+      "lastName": "Karl",
+      "dateOfBirth": "18/07/1997"
+    }
+  ];
   }
 
 }
