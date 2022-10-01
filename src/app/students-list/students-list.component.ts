@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../model/student.model';
+import { StudentService } from '../service/student.service';
 
 
 @Component({
@@ -10,22 +11,16 @@ import { Student } from '../model/student.model';
 export class StudentsListComponent implements OnInit {
 
   students: Student[] | undefined;
-  constructor() { }
+  constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
-    this.students = [{
-      "studentId":1,
-      "firstName": "Bob",
-      "lastName": "Ross",
-      "dateOfBirth": "25/06/1999"
-    },
-    {
-      "studentId":2,
-      "firstName": "Paul",
-      "lastName": "Karl",
-      "dateOfBirth": "18/07/1997"
-    }
-  ];
+    this.getStudentsList();
+  }
+
+  private getStudentsList() {
+    this.studentService.getStudentsList().subscribe(data => {
+      this.students = data;
+    });
   }
 
 }
