@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Student } from '../model/student.model';
 import { StudentService } from '../service/student.service';
 
@@ -11,7 +12,7 @@ import { StudentService } from '../service/student.service';
 export class StudentsListComponent implements OnInit {
 
   students: Student[] | undefined;
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService, private router: Router) { }
 
   ngOnInit(): void {
     this.getStudentsList();
@@ -23,4 +24,7 @@ export class StudentsListComponent implements OnInit {
     });
   }
 
+   updateStudent(studentId: number | undefined){
+    this.router.navigate(['update-student', studentId]);
+  }
 }
