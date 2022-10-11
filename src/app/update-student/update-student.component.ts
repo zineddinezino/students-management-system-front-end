@@ -16,11 +16,14 @@ export class UpdateStudentComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.studentId = this.activatedRoute.snapshot.params['studentId'];
+    /* this.studentId = this.activatedRoute.snapshot.params['studentId'];
     this.studentService.getStudentById(this.studentId).subscribe(data =>{
       this.student = data;
     },
-    error => console.log(error));
+    error => console.log(error)); */
+    this.activatedRoute.data.subscribe(data =>{
+      this.student = data['studentResolved'];
+    });
   }
 
   onSubmit(){
