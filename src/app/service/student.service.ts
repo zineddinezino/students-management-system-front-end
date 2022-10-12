@@ -28,4 +28,8 @@ export class StudentService {
   updateStudent(student: Student){
     return this.httpClient.put(`${this.baseURL}`, student);
   }
+
+  deleteStudent(studentId: number | undefined): Observable<Student> {
+    return this.httpClient.delete<Student>(`${this.baseURL}/${studentId}`);
+  }
 }
